@@ -1,0 +1,78 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <?= $this->headTitle('Role Demo')->setSeparator(' - ')->setAutoEscape(false) ?>
+    <?= $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+    <!-- Le styles -->
+    <?= $this->headLink([
+        'rel'  => 'shortcut icon',
+        'type' => 'image/vnd.microsoft.icon',
+        'href' => $this->basePath() . '/img/favicon.ico',
+    ])
+        ->appendStylesheet($this->basePath('mdbootstrap/v4.4.0/compiled.min.css'));
+    ?>
+</head>
+<body>
+
+<!--to top button-->
+<div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+    <a href="#top-section" class="btn-floating btn-ins">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+</div>
+
+<div id="top-section" style="display: none;">
+    <!--Main Navigation-->
+    <header>
+        <?php
+        echo $this->partial('layout/partial/header', []);
+        ?>
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main Layout-->
+    <main class="py-5">
+        <div class="container">
+            <div class="row mt-5 pt-5">
+                <div class="col-md-12">
+                    <!-- Page content placeholder -->
+                    <?= $this->content; ?>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!--Main Layout-->
+
+    <!--Footer-->
+    <footer class="page-footer elegant-color-dark">
+        <?php
+        echo $this->partial('layout/partial/footer', []);
+        ?>
+    </footer>
+    <!--/.Footer-->
+</div>
+
+<!-- Scripts -->
+<?= $this->headScript()
+    ->appendFile($this->basePath('assets/MDBootstrap/js/jquery-3.2.1.min.js'))
+    ->appendFile($this->basePath('mdbootstrap/v4.4.0/jquery-ui.js'))
+    ->appendFile($this->basePath('mdbootstrap/v4.4.0/compiled.min.js'));
+?>
+
+<script>
+    wow = new WOW().init();
+
+    $(function () {
+        $('#top-section').show(0);
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+<?= $this->inlineScript() ?>
+</body>
+</html>
